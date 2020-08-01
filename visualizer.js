@@ -148,7 +148,6 @@ function* shellSort(array){
 	var count = array.length;
 	for(var gap = Math.floor(count/2); gap > 0; gap = Math.floor(gap/2)){
 		var i = gap;
-		console.log(i);
 	 	do{
 			var temp = array[i];
 			j = i;
@@ -156,6 +155,8 @@ function* shellSort(array){
 				if(array[j-gap] > array[j]){
 					array[j] = array[j-gap];
 					array[j-gap] = temp;
+				}else{
+					break;
 				}
 				draw(array,j,j-gap);
 				j = j - gap;
