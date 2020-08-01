@@ -56,6 +56,8 @@ function Sort(){
 		var sort = selectSort(array);
 	}else if (algorithm == "insertionSort") {
 		var sort = insertSort(array);
+	}else if (algorithm == "shellSort") {
+		var sort = shellSort(array);
 	}
 	function anim(ar){
 		sort.next(); // call next iteration of the bubbleSort function
@@ -134,6 +136,34 @@ function* insertSort(array){
 		i++;
 		yield i;
 	}while(i < array.length);
+	var end_time = new Date().getTime();
+  	document.getElementById("time").innerHTML = ((end_time - start_time)/1000);
+	enable_elements();
+}
+
+function* shellSort(array){
+	document.getElementById("time").innerHTML = "-";
+	var start_time = new Date().getTime();
+	var n = array.length;
+	var count = array.length;
+	for(var gap = Math.floor(count/2); gap > 0; gap = Math.floor(gap/2)){
+		var i = gap;
+		console.log(i);
+	 	do{
+			var temp = array[i];
+			j = i;
+			while(j >= gap){
+				if(array[j-gap] > array[j]){
+					array[j] = array[j-gap];
+					array[j-gap] = temp;
+				}
+				draw(array,j,j-gap);
+				j = j - gap;
+				yield j;
+			}
+			i++;
+	 	}while(i < count);
+	}
 	var end_time = new Date().getTime();
   	document.getElementById("time").innerHTML = ((end_time - start_time)/1000);
 	enable_elements();
