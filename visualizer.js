@@ -155,9 +155,8 @@ function* shellSort(array){
 				if(array[j-gap] > array[j]){
 					array[j] = array[j-gap];
 					array[j-gap] = temp;
-				}else{
+				}else
 					break;
-				}
 				draw(array,j,j-gap);
 				j = j - gap;
 				yield j;
